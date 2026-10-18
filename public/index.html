@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>UNIX Terminal System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #0c0d10;
+      color: #00ff66;
+      font-family: "Courier New", Courier, monospace, "Cascadia Code", Consolas;
+      font-size: 14px;
+      line-height: 1.45;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      padding: 12px;
+    }
+    #terminal-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #1f2d24;
+      background: #08090a;
+      box-shadow: 0 0 15px rgba(0, 255, 102, 0.08);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    #terminal-header {
+      background: #14171a;
+      color: #7b8893;
+      padding: 6px 12px;
+      font-size: 12px;
+      border-bottom: 1px solid #22272e;
+      display: flex;
+      justify-content: space-between;
+    }
+    #screen {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    .line {
+      margin-bottom: 4px;
+    }
+    .system { color: #58a6ff; }
+    .error { color: #f85149; }
+    .chat-msg { color: #e6edf3; }
+    .chat-author { color: #e3b341; font-weight: bold; }
+    .chat-time { color: #8b949e; font-size: 11px; margin-right: 6px; }
+    #input-row {
+      display: flex;
+      align-items: center;
+      padding: 6px 12px 12px 12px;
+      background: #08090a;
+    }
+    #prompt {
+      color: #00ff66;
+      margin-right: 8px;
+      white-space: nowrap;
+      user-select: none;
+    }
+    #cli-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #ffffff;
+      font-family: inherit;
+      font-size: inherit;
+      caret-color: #00ff66;
+    }
+  </style>
+</head>
+<body>
+  <div id="terminal-container">
+    <div id="terminal-header">
+      <span>TTY: /dev/pts/0 — bash 5.2</span>
+      <span>Host: vps-node-1</span>
+    </div>
+    <div id="screen"></div>
+    <div id="input-row">
+      <span id="prompt">guest@unix-net:~$</span>
+      <input type="text" id="cli-input" autofocus autocomplete="off" spellcheck="false" />
+    </div>
+  </div>
+
+  <script src="terminal.js"></script>
+</body>
+</html>
